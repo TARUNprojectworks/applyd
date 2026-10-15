@@ -1,0 +1,136 @@
+/* base.css - colors, fonts, and plain element styles (inputs, buttons, links) */
+
+/* All colors in one place so they are easy to change */
+:root {
+  --bg: #f4f4f2;
+  --panel: #ffffff;
+  --border: #dcdcdc;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --accent: #1f5f5b; /* dark teal, used for buttons and links */
+  --accent-dark: #174845;
+
+  --applied: #5f6368;
+  --interview: #b7791f;
+  --offer: #2f6f3e;
+  --rejected: #9b2c2c;
+
+  --radius: 4px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box; /* width includes padding and border */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+a {
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 13px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ---------- Form controls ---------- */
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font: inherit;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f0f0ee;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn-danger {
+  color: var(--rejected);
+  border-color: var(--rejected);
+}
+
+.btn-danger:hover {
+  background: #f7e8e8;
+}
+
+.btn-small {
+  padding: 3px 10px;
+  font-size: 13px;
+}
+
+/* Red error box shown above forms and lists */
+.alert {
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--rejected);
+  border-radius: var(--radius);
+  background: #f7e8e8;
+  color: var(--rejected);
+}

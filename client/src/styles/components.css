@@ -1,0 +1,354 @@
+/* components.css - stats cards, toolbar, table, board, badges, timeline, detail page */
+
+/* ---------- Stats cards ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ---------- Toolbar (search, filters, view toggle) ---------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.toolbar input[type='search'] {
+  flex: 1;
+  min-width: 180px;
+}
+
+.view-toggle {
+  display: flex;
+  margin-left: auto; /* push to the right end */
+}
+
+.view-toggle button {
+  font: inherit;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+
+.view-toggle button:first-child {
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.view-toggle button:last-child {
+  border-radius: 0 var(--radius) var(--radius) 0;
+  border-left: none;
+}
+
+.view-toggle button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 32px 16px;
+}
+
+/* ---------- Table (list view) ---------- */
+.table-wrap {
+  overflow-x: auto; /* table scrolls sideways on small screens */
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #ebebeb;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  background: #fafaf8;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.table tbody tr:hover {
+  background: #fafaf8;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Board view ---------- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 status columns */
+  gap: 12px;
+  align-items: start;
+}
+
+.board-col {
+  background: #ebebe8;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--applied); /* colored top line per status */
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+.board-col-interview {
+  border-top-color: var(--interview);
+}
+
+.board-col-offer {
+  border-top-color: var(--offer);
+}
+
+.board-col-rejected {
+  border-top-color: var(--rejected);
+}
+
+.board-col-title {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-title {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+}
+
+.card-role {
+  font-size: 13px;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card .status-select {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* ---------- Status badge + status dropdown ---------- */
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radius);
+}
+
+.badge-applied {
+  color: var(--applied);
+  background: #ededeb;
+}
+
+.badge-interview {
+  color: var(--interview);
+  background: #fbf3e4;
+}
+
+.badge-offer {
+  color: var(--offer);
+  background: #e8f1ea;
+}
+
+.badge-rejected {
+  color: var(--rejected);
+  background: #f7e8e8;
+}
+
+.status-select {
+  padding: 2px 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-applied {
+  color: var(--applied);
+}
+
+.status-interview {
+  color: var(--interview);
+}
+
+.status-offer {
+  color: var(--offer);
+}
+
+.status-rejected {
+  color: var(--rejected);
+}
+
+/* "Follow up" label */
+.followup {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b5310;
+  background: #f3ecd6;
+  border: 1px solid #d9c98f;
+  border-radius: var(--radius);
+  vertical-align: middle;
+}
+
+/* ---------- Detail page ---------- */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* details wider, timeline narrower */
+  gap: 16px;
+  align-items: start;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* label | value */
+  gap: 8px 12px;
+  margin: 0;
+}
+
+.details dt {
+  color: var(--muted);
+}
+
+.details dd {
+  margin: 0;
+  word-break: break-word;
+}
+
+.notes {
+  white-space: pre-wrap; /* keep line breaks the user typed */
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--border); /* the vertical line */
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Small dot on the line for each entry */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item .badge {
+  align-self: flex-start;
+}
+
+.timeline-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .board {
+    grid-template-columns: 1fr; /* columns stack on mobile */
+  }
+
+  .view-toggle {
+    margin-left: 0;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .details dd {
+    margin-bottom: 8px;
+  }
+}
